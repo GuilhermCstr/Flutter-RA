@@ -1,10 +1,4 @@
-//Other custom imports
 import 'dart:io';
-
-// Begin custom widget code
-// DO NOT REMOVE OR MODIFY THE CODE ABOVE!
-
-//AR Flutter Plugin
 import 'package:ar_flutter_plugin_updated/ar_flutter_plugin.dart';
 import 'package:ar_flutter_plugin_updated/datatypes/config_planedetection.dart';
 import 'package:ar_flutter_plugin_updated/datatypes/node_types.dart';
@@ -36,9 +30,7 @@ class LocalObjectView extends StatefulWidget {
 class _LocalObjectViewState extends State<LocalObjectView> {
   ARSessionManager? arSessionManager;
   ARObjectManager? arObjectManager;
-  //String localObjectReference;
   ARNode? localObjectNode;
-  //String webObjectReference;
   ARNode? webObjectNode;
   ARNode? fileSystemNode;
   HttpClient? httpClient;
@@ -75,7 +67,7 @@ class _LocalObjectViewState extends State<LocalObjectView> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ElevatedButton(
-                      onPressed:() => onLocalObjectAtOriginButtonPressed('SinoMissoes.glb'),
+                      onPressed:() => onLocalObjectAtOriginButtonPressed('sinoMissoes.glb'),
                       child: Text("Sino Missoes"),
                     ),
                     ElevatedButton(

@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:ra_teste/local.dart';
+import 'package:ra_teste/views/home_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const FlutterRA());  
 }
-
-
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class FlutterRA extends StatelessWidget {
+  const FlutterRA({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +15,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         useMaterial3: true,
       ),
-      home: LocalObjectView(),
+      home: HomePage(),
     );
   }
 }
