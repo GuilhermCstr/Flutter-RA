@@ -25,7 +25,7 @@ class LocalObjectViewModel {
   }
 
   Future<void> placeObject(String fileName) async {
-    if (localObjectNode != null) return; // já colocado
+    if (localObjectNode != null) return;
 
     final newNode = ARNode(
       type: NodeType.fileSystemAppFolderGLB,
