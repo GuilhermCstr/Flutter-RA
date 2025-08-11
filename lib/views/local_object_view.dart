@@ -1,6 +1,6 @@
 import 'package:ar_flutter_plugin_updated/datatypes/config_planedetection.dart';
-import 'package:flutter/material.dart';
 import 'package:ar_flutter_plugin_updated/widgets/ar_view.dart';
+import 'package:flutter/material.dart';
 
 import 'local_object_viewmodel.dart';
 
@@ -15,12 +15,12 @@ class LocalObjectView extends StatefulWidget {
 
 class _LocalObjectViewState extends State<LocalObjectView> {
   late final LocalObjectViewModel viewModel;
-  bool objectPlaced = false;
+  bool hasObjectPlaced = false;
 
   @override
   void initState() {
     super.initState();
-    viewModel = LocalObjectViewModel();
+    viewModel = LocalObjectViewModel(widget.initialModel);
   }
 
   @override
@@ -30,22 +30,22 @@ class _LocalObjectViewState extends State<LocalObjectView> {
         children: [
           ARView(
             onARViewCreated: (session, object, anchor, location) async {
-              await viewModel.initAR(session, object);
+              await viewModel.initAR(session, object, anchor);
             },
-            planeDetectionConfig: PlaneDetectionConfig.horizontalAndVertical,
+            planeDetectionConfig: PlaneDetectionConfig.horizontal,
           ),
           Positioned(
             bottom: 30,
             left: 30,
             right: 30,
-            child: ElevatedButton(
-              onPressed: () async {
-                if (!objectPlaced) {
-                  await viewModel.placeObject(widget.initialModel);
-                  setState(() => objectPlaced = true);
-                }
-              },
-              child: Text(objectPlaced ? 'Objeto Posicionado' : 'Posicionar Objeto'),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  onPressed: viewModel.onRemoveEverything,
+                  child: const Text('Remover Tudo'),
+                ),
+              ],
             ),
           ),
         ],
